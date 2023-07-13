@@ -1,38 +1,157 @@
+
 .App {
+  font-family:Avenir, "Century Gothic", sans-serif;
+  font-weight:100; 
+  font-style:normal;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  justify-content: center;
+  background-color: rgba(2, 223, 156, 0.962);
+  /* padding:20px; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  text-align: center;
+  min-height: 100vh;
+  padding-bottom:10px;
+  /* padding-right: 10px;
+  padding-left: 10px; */
+  
+}
+
+li{
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+}
+
+.ulIs{
+  list-style: initial;
+}
+
+ul li:before {
+  content: "";
+}
+
+.header{
+  width: 100%;
+  color:white;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.headerBtn {
+  margin-bottom: 50px;
+  margin-right: 10px;
+  background-color: antiquewhite;
+  color: darkblue;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.ReadPosts {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #3c7ec3;
+  color:white;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #64ff9f;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #02376b; /* Dark background color */
+  color: #fff; /* Text color */
+}
+
+.navbar-brand {
+  color: #fff; /* Text color for the brand */
+  font-weight: bold; /* Bold font weight */
+}
+
+.navbar-nav {
+  margin-right: auto; /* Push the navbar items to the right */
+}
+
+.navbar-item {
+  display: inline-block; /* Display the navbar items horizontally */
+  margin-right: 10px; /* Add margin between the navbar items */
+}
+
+.nav-link {
+  color: #fff; /* Text color for the links */
+  text-decoration: none; /* Remove underline from links */
+}
+
+/* Active link */
+.nav-link.active {
+  font-weight: bold; /* Bold font weight for active link */
+}
+
+.container {
+  background-color: #37C0B0;
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease-in-out;
+  padding: 10px;
+  width: 46%;
+  margin-top: 1px;
+}
+
+.container2 {
+  background-color: #37C0B0;
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease-in-out;
+  padding: 10px;
+  width: 48%;
+  margin-top: 1px;
+}
+
+.smallcontainer{
+  width: 100px;
+    margin: 10px;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.container:hover {
+  box-shadow: 0 0 8px rgba(44, 127, 51, 0.3);
+}
+
+.container-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 15px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.container-wrapper2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 15px;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+p {
+  font-size: 18px;
+  font-family: inherit;
 }

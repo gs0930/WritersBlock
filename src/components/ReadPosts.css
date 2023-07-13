@@ -1,0 +1,18 @@
+.ReadPosts {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr; 
+    gap: 5px;
+}
+
+.contain {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap:10px;
+}
+
+.contain input {
+    margin-right: 10px;
+    /* add any other input styles here */
+}
