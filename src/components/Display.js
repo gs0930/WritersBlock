@@ -40,19 +40,22 @@ const DisplayPosts = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     const { comments } = event.target.elements;
-
+    const newComment = comments.value;
+  
     try {
       await axios.post(`http://localhost:5000/posts/update/${id}`, {
-        title: post.title, content: post.content, comments: post.comments ? `${post.comments}\n${comments.value}` : comments.value,
+        title: post.title, content: post.content, comments: post.comments ? `${post.comments}\n${newComment}` : newComment,
       });
-
-      setComments(prevComments => prevComments + '\n' + comments.value);
-      comments.value = '';
+  
+      setComments(prevComments => prevComments + '\n' + newComment);
+      console.log(newComment);
     } catch (error) {
       console.error('Error submitting comment:', error);
     }
+  
+    comments.value = '';
   };
 
   const handleDeleteComment = (index) => {
@@ -65,14 +68,18 @@ const DisplayPosts = () => {
   return (
     <div>
       <div className="post">
-        <h2 style={{ color: 'white' }}>{post.title}</h2>
-        <h5 style={{ color: 'white' }}>{post.content}</h5>
-        {post.image && <img src={post.image} height="300" alt="" />}
-      
+        <h4 style={{ color: 'white' }}>{post.title}</h4>
+        <div className="post-content">
+          {post.content}
+          {post.image && <img src={post.image} height="300" alt="" />}
 
-      <button className="betButton" onClick={updateCount} >👍 Upvotes: {count}</button>
+
+        </div>
+
+
+        <button className="betButton" onClick={updateCount} >👍 Upvotes: {count}</button>
       </div>
-      
+
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Leave a Comment</label>
         <input type="text" id="comments" name="comments" style={{ maxWidth: '80%' }} />
@@ -81,7 +88,7 @@ const DisplayPosts = () => {
       </form>
 
       <p></p>
-      <h3 style={{textAlign: 'left'}}>Comments</h3>
+      <h3 style={{ textAlign: 'left' }}>Comments</h3>
 
       {comments !== "" && comments.split('\n').map((comment, index) => (
         <div className="comment" key={index}>

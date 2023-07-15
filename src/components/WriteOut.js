@@ -63,6 +63,10 @@ const WriteOut = () => {
         setSentences([]);
     };
 
+    const addTen =() => {
+        setTimeLeft(timeLeft + 10);
+    }
+
     const handleDownloadPDF = () => {
         const element = document.getElementById('container');
         html2pdf()
@@ -106,6 +110,7 @@ const WriteOut = () => {
                     <button onClick={handleStop} style={{ margin:'20px'}}>Stop</button>
                 )}
                 <button onClick={handleReset} style={{ margin:'20px'}}>Reset</button>
+                <button onClick={addTen} style={{ margin:'20px'}}>Add 10 secs</button>
             </div>
             <div>
                 <textarea
