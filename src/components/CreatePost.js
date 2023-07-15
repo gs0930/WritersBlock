@@ -30,7 +30,7 @@ const CreatePost = () => {
 
         <label htmlFor="content">Content</label><br />
         {/* <input class = "contentInput" type="text" id="content" name="content" value={post.content} onChange={handleInputChange} /><br /> */}
-        <textarea rows="5" id="content" name="content" value={post.content} onChange={handleInputChange} /><br />
+        <textarea style = {{ marginTop: '10px' }}rows="5" id="content" name="content" value={post.content} onChange={handleInputChange} /><br />
         
         <br />
 

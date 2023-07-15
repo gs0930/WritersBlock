@@ -109,6 +109,7 @@ const TextAnalyzer = () => {
   return (
     <div style={{ padding: '15px', maxWidth: '90%'}}> 
       <h1>Text Analyzer</h1>
+      <h6>Get more analysis for longer text</h6>
       <form onSubmit={handleSubmit}>
         <textarea
           rows="8"
@@ -118,7 +119,7 @@ const TextAnalyzer = () => {
           placeholder="Paste your text here..."
           required
         ></textarea>
-        <button type="submit">Analyze</button>
+        <button style={{ marginTop: '10px' }} type="submit">Analyze</button>
       </form>
       <div class="container-wrapper">
         {frequencies.length > 0 && (

@@ -155,3 +155,33 @@ p {
   font-size: 18px;
   font-family: inherit;
 }
+
+
+.comment {
+  background-color: #faf7f7;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  margin-left: 0px;
+  text-align: left;
+  margin-top: 20px;
+}
+
+.comment h6, h5{
+  margin: 10px;
+}
+
+.post {
+  backdrop-filter: blur(2px);
+  border: 2px solid rgba(153, 153, 153, 0.497);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 25px;
+  margin-top: 10px;
+  width: 600px;
+  height: auto;
+  text-align: left;
+  background-color: #069002;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

@@ -72,12 +72,10 @@ const App = () => {
     <div className="App">
       <Navbar />
 
-      <div className="header">
-        {/* <a className="home-link" key="home-button" >
-          <Link to="/" style={{ color: 'white' }}>Home</Link>
-        </a> */}
+      {/* <div className="header">
+       
 
-      </div>
+      </div> */}
       {element}
     </div>
 

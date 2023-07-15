@@ -4,15 +4,16 @@
     /* border-radius: 20px; */
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-right: 10px;
     margin-bottom: 25px;
     width: 600px;
     height: 150px;
     text-align: center;
     background-color: #4fbb85;
     font-family: inherit;
+    margin-left: 45px;
     
 }
+
 
 h1, h2, h3, h4, h5, h6 {
     font-family: inherit;

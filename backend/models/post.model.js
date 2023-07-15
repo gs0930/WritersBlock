@@ -22,11 +22,12 @@ const postSchema = new mongoose.Schema({
   //     // ref: 'Comment',
   //   },
   // ], 
-  comments: 
+  comments: [ 
     {
       type: String, //mongoose.Schema.Types.ObjectId
       // ref: 'Comment',
-    },
+    }
+  ],
 
 });
 

@@ -78,7 +78,7 @@ const ReadPosts = (props) => {
         <div>
            
             <h1>Writers' Block</h1>
-        <h5>Share any piece of your writing with the community!</h5>
+        <h5>Share any piece of your writing with the community and get feedback!</h5>
         {/* <Link to="/"><button className="headerBtn"> Explore Challenges 🔍  </button></Link> */}
         <Link to="/new"><button className="headerBtn"> Create a post  </button></Link>
         {/* <CreatePost /> */}
