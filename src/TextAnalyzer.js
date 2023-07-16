@@ -10,51 +10,46 @@ const TextAnalyzer = () => {
   const [summary, setSummary] = useState('');
   const [synonymsList, setSynonymsList] = useState([]);
   const [sentiments, setSentiments] = useState([]);
-
   const [showSynonymsButton, setShowSynonymsButton] = useState(false);
 
   const handleChange = (event) => {
     setText(event.target.value);
   };
 
-  const fetchSynonyms = async (event) => {
-    console.log(longWordFrequencies);
+const fetchSynonyms = async () => {
     const wordList = longWordFrequencies.slice(0, 5).map((frequency) => frequency.word);
+
     const newSynonymsList = [];
-
     for (const word of wordList) {
-      try {
-        const response = await axios.get(`https://wordsapiv1.p.rapidapi.com/words/${word}`, {
-          headers: {
-            'X-RapidAPI-Key': '5a13954628mshb4abc2d3b9c74a6p1c4403jsn784f7435a766',
-            'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
-          }
-        });
-
-        let synonyms = null;
-        if (response.data.synonyms) {
-          synonyms = response.data.synonyms.slice(0, 5);
+      const options = {
+        method: 'GET',
+        url: `https://wordsapiv1.p.rapidapi.com/words/${word}/synonyms`,
+        headers: {
+          'X-RapidAPI-Key': '5a13954628mshb4abc2d3b9c74a6p1c4403jsn784f7435a766',
+          'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
         }
+      };
 
+      try {
+        const response = await axios.request(options);
+        const synonyms = response.data.synonyms.slice(0, 5);
         newSynonymsList.push({ word, synonyms });
       } catch (error) {
         console.error(error);
       }
     }
-    console.log(newSynonymsList);
 
     setSynonymsList(newSynonymsList);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(text);
 
     try {
-      const response = await axios.post('https://writersblock.onrender.com/api/analyze-combined', { text });
+      const response = await axios.post('http://localhost:5000/api/analyze-combined', { text });
       const sortedFrequencies = response.data.frequencies.sort((a, b) => b.frequency - a.frequency);
       setFrequencies(sortedFrequencies);
-
-      await new Promise(resolve => setTimeout(resolve, 2));
 
       // const sortedLongWordFrequencies = response.data.longWordFrequencies.sort((a, b) =>
       //   b.frequency - a.frequency
@@ -78,20 +73,43 @@ const TextAnalyzer = () => {
       const summaryData = response.data.summary;
       setSummary(summaryData);
 
-      // fetchSynonyms();
-
+      fetchSynonyms();
       setShowSynonymsButton(true); // Show synonym button
+
 
     } catch (error) {
       console.error(error);
     }
+    // console.log(longWordFrequencies);
+    // const wordList = longWordFrequencies.slice(0, 5).map((frequency) => frequency.word);
+    // const newSynonymsList = [];
 
+    // for (const word of wordList) {
+    //   try {
+    //     const response = await axios.get(`https://wordsapiv1.p.rapidapi.com/words/${word}/synonyms`, {
+    //       headers: {
+    //         'X-RapidAPI-Key': '5a13954628mshb4abc2d3b9c74a6p1c4403jsn784f7435a766',
+    //         'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
+    //       }
+    //     });
+
+
+    //     const synonyms = response.data.synonyms.slice(0, 5);
+    //     newSynonymsList.push({ word, synonyms });
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // }
+    // console.log(newSynonymsList);
+
+    // setSynonymsList(newSynonymsList);
+    
   };
 
   return (
     <div style={{ padding: '15px', maxWidth: '90%' }}>
       <h1>Text Analyzer</h1>
-      {/* <h6>Get more analysis for longer text</h6> */}
+      <h6>Get more analysis for longer text</h6>
       <form onSubmit={handleSubmit}>
         <textarea
           rows="8"
@@ -105,7 +123,7 @@ const TextAnalyzer = () => {
           Analyze
         </button>
         {showSynonymsButton && (
-          <button style={{ marginTop: '10px' }} type="button" onClick={fetchSynonyms}>
+          <button style={{ marginTop: '10px', marginLeft: '10px'}} type="button" onClick={fetchSynonyms}>
             Get Synonyms
           </button>
         )}
@@ -126,7 +144,7 @@ const TextAnalyzer = () => {
 
         {synonymsList.length > 0 && (
           <div className="container">
-            <h5>Here are synonyms for the most frequent words in the text:</h5>
+            <h5>Click 'analyze' one more time to get synonyms for the most frequent words in the text:</h5>
             <div className="container-wrapper">
               <div className="container-wrapper2">
                 {synonymsList.slice(0, 5).map((synonymItem, index) => (
