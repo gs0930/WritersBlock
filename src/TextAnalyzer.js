@@ -18,7 +18,7 @@ const TextAnalyzer = () => {
   };
 
   const fetchSynonyms = async (event) => {
-    console.log(longWordFrequencies);
+    // console.log(longWordFrequencies);
     const wordList = longWordFrequencies.slice(0, 5).map((frequency) => frequency.word);
     const newSynonymsList = [];
 
@@ -45,7 +45,6 @@ const TextAnalyzer = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(text);
 
     try {
       const response = await axios.post('https://writersblock.onrender.com/api/analyze-combined', { text });
@@ -80,12 +79,10 @@ const TextAnalyzer = () => {
 
       setShowSynonymsButton(true); // Show synonym button
 
-
     } catch (error) {
       console.error(error);
     }
 
-    setSynonymsList(newSynonymsList);
   };
 
   return (
