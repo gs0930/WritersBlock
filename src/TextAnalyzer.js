@@ -11,6 +11,8 @@ const TextAnalyzer = () => {
   const [synonymsList, setSynonymsList] = useState([]);
   const [sentiments, setSentiments] = useState([]);
 
+  const [showSynonymsButton, setShowSynonymsButton] = useState(false);
+
   const handleChange = (event) => {
     setText(event.target.value);
   };
@@ -74,31 +76,14 @@ const TextAnalyzer = () => {
       const summaryData = response.data.summary;
       setSummary(summaryData);
 
+      // fetchSynonyms();
+
+      setShowSynonymsButton(true); // Show synonym button
+
 
     } catch (error) {
       console.error(error);
     }
-    console.log(longWordFrequencies);
-    const wordList = longWordFrequencies.slice(0, 5).map((frequency) => frequency.word);
-    const newSynonymsList = [];
-
-    for (const word of wordList) {
-      try {
-        const response = await axios.get(`https://wordsapiv1.p.rapidapi.com/words/${word}/synonyms`, {
-          headers: {
-            'X-RapidAPI-Key': '5a13954628mshb4abc2d3b9c74a6p1c4403jsn784f7435a766',
-            'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
-          }
-        });
-
-
-        const synonyms = response.data.synonyms.slice(0, 5);
-        newSynonymsList.push({ word, synonyms });
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    console.log(newSynonymsList);
 
     setSynonymsList(newSynonymsList);
   };
@@ -119,6 +104,11 @@ const TextAnalyzer = () => {
         <button style={{ marginTop: '10px' }} type="submit">
           Analyze
         </button>
+        {showSynonymsButton && (
+        <button style={{ marginTop: '10px' }} type="button" onClick={fetchSynonyms}>
+          Get Synonyms
+        </button>
+      )}
       </form>
       <div className="container-wrapper">
         {frequencies.length > 0 && (
@@ -136,7 +126,7 @@ const TextAnalyzer = () => {
 
         {synonymsList.length > 0 && (
           <div className="container">
-            <h5>Click 'analyze' one more time to get synonyms for the most frequent words in the text:</h5>
+            <h5>Here are synonyms for the most frequent words in the text:</h5>
             <div className="container-wrapper">
               <div className="container-wrapper2">
                 {synonymsList.slice(0, 5).map((synonymItem, index) => (
