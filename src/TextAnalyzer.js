@@ -31,10 +31,11 @@ const TextAnalyzer = () => {
           }
         });
 
-
+        let synonyms = null;
         if (response.data.synonyms) {
           synonyms = response.data.synonyms.slice(0, 5);
         }
+
         newSynonymsList.push({ word, synonyms });
       } catch (error) {
         console.error(error);
@@ -104,10 +105,10 @@ const TextAnalyzer = () => {
           Analyze
         </button>
         {showSynonymsButton && (
-        <button style={{ marginTop: '10px' }} type="button" onClick={fetchSynonyms}>
-          Get Synonyms
-        </button>
-      )}
+          <button style={{ marginTop: '10px' }} type="button" onClick={fetchSynonyms}>
+            Get Synonyms
+          </button>
+        )}
       </form>
       <div className="container-wrapper">
         {frequencies.length > 0 && (
