@@ -18,7 +18,7 @@ const TextAnalyzer = () => {
   };
 
   const fetchSynonyms = async (event) => {
-    // console.log(longWordFrequencies);
+    console.log(longWordFrequencies);
     const wordList = longWordFrequencies.slice(0, 5).map((frequency) => frequency.word);
     const newSynonymsList = [];
 
@@ -32,7 +32,9 @@ const TextAnalyzer = () => {
         });
 
 
-        const synonyms = response.data.synonyms.slice(0, 5);
+        if (response.data.synonyms) {
+          synonyms = response.data.synonyms.slice(0, 5);
+        }
         newSynonymsList.push({ word, synonyms });
       } catch (error) {
         console.error(error);
