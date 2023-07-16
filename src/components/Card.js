@@ -50,8 +50,7 @@ const Card = (props) => {
           {isOverflowing && !expanded && (
             <>
               ...
-              <a href="#" onClick={toggleExpanded}><span style="color: lightblue">Read More</span></a>
-            </>
+              <a href="#" onClick={toggleExpanded} style={{textDecoration: 'none'}}><span style={{color: '#b1fcec'}}> Read More</span></a>            </>
           )}</div>
         <h2 className="count">{props.count} upvotes</h2>
       </div>
