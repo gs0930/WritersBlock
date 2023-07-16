@@ -46,7 +46,7 @@ const TextAnalyzer = () => {
     console.log(text);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/analyze-combined', { text });
+      const response = await axios.post('https://writersblock.onrender.com/posts/api/analyze-combined', { text });
       const sortedFrequencies = response.data.frequencies.sort((a, b) => b.frequency - a.frequency);
       setFrequencies(sortedFrequencies);
 

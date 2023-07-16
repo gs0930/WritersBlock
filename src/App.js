@@ -17,16 +17,15 @@ import WriteOut from "./components/WriteOut";
 import { Link } from 'react-router-dom'
 import { useRoutes } from 'react-router-dom'
 
-
+//created by Emily Suh
 const App = () => {
 
-  const descr = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     async function fetchPosts() {
       try {
-        const response = await axios.get('http://localhost:5000/posts/');
+        const response = await axios.get('https://writersblock.onrender.com/posts/');
         setPosts(response.data);
       } catch (error) {
         console.error('Error fetching posts:', error);

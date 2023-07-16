@@ -13,7 +13,7 @@ const DisplayPosts = () => {
   useEffect(() => {
     async function fetchPost() {
       try {
-        const response = await axios.get(`http://localhost:5000/posts/${id}`);
+        const response = await axios.get(`https://writersblock.onrender.com/posts/${id}`);
         const postData = response.data;
         setPost(postData);
         setCount(postData.likeCount || 0);

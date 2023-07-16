@@ -12,7 +12,7 @@ const EditPost = () => {
   });
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/posts/${id}`)
+    axios.get(`https://writersblock.onrender.com/posts/${id}`)
       .then(response => {
         const { title, content, image } = response.data;
         setPost({
@@ -51,7 +51,7 @@ const EditPost = () => {
 
     console.log(updatedPost);
 
-    axios.post(`http://localhost:5000/posts/update/${id}`, updatedPost)
+    axios.post(`https://writersblock.onrender.com/posts/update/${id}`, updatedPost)
       .then(res => console.log(res.data))
       .catch(error => console.log(error));
 
@@ -59,7 +59,7 @@ const EditPost = () => {
   };
 
   const deletePost = () => {
-    axios.delete(`http://localhost:5000/posts/${id}`)
+    axios.delete(`https://writersblock.onrender.com/posts/${id}`)
       .then(res => console.log(res.data))
       .catch(error => console.log(error));
 

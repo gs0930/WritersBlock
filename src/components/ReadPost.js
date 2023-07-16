@@ -36,7 +36,7 @@ const ReadPosts = (props) => {
         // handleSortByNewest();
         async function fetchPosts() {
             try {
-              const response = await axios.get('http://localhost:5000/posts/');
+              const response = await axios.get('https://writersblock.onrender.com/posts/');
               setPosts(response.data);
             } catch (error) {
               console.error('Error fetching posts:', error);
