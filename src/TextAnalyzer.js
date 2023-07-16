@@ -144,7 +144,7 @@ const fetchSynonyms = async () => {
 
         {synonymsList.length > 0 && (
           <div className="container">
-            <h5>Click 'analyze' one more time to get synonyms for the most frequent words in the text:</h5>
+            <h5>Here are synonyms for the most frequent words in the text:</h5>
             <div className="container-wrapper">
               <div className="container-wrapper2">
                 {synonymsList.slice(0, 5).map((synonymItem, index) => (
