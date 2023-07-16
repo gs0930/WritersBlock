@@ -49,13 +49,13 @@ const TextAnalyzer = () => {
       const response = await axios.post('https://writersblock.onrender.com/api/analyze-combined', { text });
       const sortedFrequencies = response.data.frequencies.sort((a, b) => b.frequency - a.frequency);
       setFrequencies(sortedFrequencies);
-      
+
       await new Promise(resolve => setTimeout(resolve, 2));
 
-      const sortedLongWordFrequencies = response.data.longWordFrequencies.sort((a, b) =>
-        b.frequency - a.frequency
-      );
-      // const sortedLongWordFrequencies = response.data.longWordFrequencies;
+      // const sortedLongWordFrequencies = response.data.longWordFrequencies.sort((a, b) =>
+      //   b.frequency - a.frequency
+      // );
+      const sortedLongWordFrequencies = response.data.longWordFrequencies;
       setLongWordFrequencies(sortedLongWordFrequencies);
       console.log(longWordFrequencies);
 

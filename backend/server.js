@@ -142,7 +142,7 @@ app.post('/api/analyze-combined', (req, res) => {
   
     const sortedFrequencies = frequencies.sort((a, b) => b.frequency - a.frequency);
 
-    // const sortedLongWordFrequencies = longWordFrequenciesArray.slice(0, 5).sort((a, b) => b.frequency - a.frequency);
+    const sortedLongWordFrequencies = longWordFrequenciesArray.slice(0, 5).sort((a, b) => b.frequency - a.frequency);
   
     const fillerWordsOccurrences = Object.entries(fillerWordsCount).map(([word, count]) => ({
       word,
@@ -163,7 +163,7 @@ app.post('/api/analyze-combined', (req, res) => {
     res.json({
       sentiments,
       frequencies: sortedFrequencies,
-      longWordFrequencies: longWordFrequenciesArray,
+      longWordFrequencies: sortedLongWordFrequencies,
       longSentences,
       // passiveSentences,
       fillerWordsOccurrences,

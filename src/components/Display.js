@@ -32,7 +32,7 @@ const DisplayPosts = () => {
     const updatedCount = count + 1;
 
     try {
-      await axios.post(`https://writersblock.onrender.com/posts/${id}`, { title: post.title, content: post.content, likeCount: updatedCount });
+      await axios.post(`https://writersblock.onrender.com/posts/update/${id}`, { title: post.title, content: post.content, likeCount: updatedCount });
     } catch (error) {
       console.error('Error updating count:', error);
     }
@@ -45,7 +45,7 @@ const DisplayPosts = () => {
     const newComment = comments.value;
   
     try {
-      await axios.post(`http://localhost:5000/posts/update/${id}`, {
+      await axios.post(`https://writersblock.onrender.com/posts/update/${id}`, {
         title: post.title, content: post.content, comments: post.comments ? `${post.comments}\n${newComment}` : newComment,
       });
   
