@@ -32,7 +32,7 @@ const DisplayPosts = () => {
     const updatedCount = count + 1;
 
     try {
-      await axios.post(`http://localhost:5000/posts/update/${id}`, { title: post.title, content: post.content, likeCount: updatedCount });
+      await axios.post(`https://writersblock.onrender.com/posts/${id}`, { title: post.title, content: post.content, likeCount: updatedCount });
     } catch (error) {
       console.error('Error updating count:', error);
     }
