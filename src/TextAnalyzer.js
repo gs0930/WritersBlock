@@ -47,7 +47,7 @@ const fetchSynonyms = async () => {
     console.log(text);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/analyze-combined', { text });
+      const response = await axios.post('https://writersbloc-412edc637764.herokuapp.com/api/analyze-combined', { text });
       const sortedFrequencies = response.data.frequencies.sort((a, b) => b.frequency - a.frequency);
       setFrequencies(sortedFrequencies);
 
