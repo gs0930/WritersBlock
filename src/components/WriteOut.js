@@ -105,7 +105,7 @@ const WriteOut = () => {
             </div>
             <div>
                 {!isRunning ? (
-                    <button onClick={handleStart} style={{ margin:'20px'}}>Start</button>
+                    <button onClick={handleStart} style={{ margin:'20px'}}>Start <span class="spinner-grow spinner-grow-sm"> </span></button>
                 ) : (
                     <button onClick={handleStop} style={{ margin:'20px'}}>Stop</button>
                 )}

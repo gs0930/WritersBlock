@@ -20,6 +20,42 @@
   padding-left: 10px; */
   
 }
+.spinner-grow {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: middle;
+  margin-bottom: 3px;
+  margin-right: 2px;
+  background-color: currentColor;
+  border-radius: 50%;
+  opacity: 0.7;
+  -webkit-animation: spinner-grow 1s ease-in-out infinite; /* Changed duration to 1s and added ease-in-out for smoother animation */
+  animation: spinner-grow 1s ease-in-out infinite;
+}
+
+.spinner-grow-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+@keyframes spinner-grow {
+  0%, 100% {
+    transform: scale(0.8); /* Changed scale value to 0.8 for a pulsating effect */
+  }
+  50% {
+    transform: scale(1); /* Changed scale value to 1 at 50% for pulsating effect */
+  }
+}
+
+@-webkit-keyframes spinner-grow {
+  0%, 100% {
+    -webkit-transform: scale(0.8); /* Changed scale value to 0.8 for a pulsating effect */
+  }
+  50% {
+    -webkit-transform: scale(1); /* Changed scale value to 1 at 50% for pulsating effect */
+  }
+}
 
 li{
   font-size: 16px;
