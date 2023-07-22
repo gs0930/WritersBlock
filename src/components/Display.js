@@ -13,7 +13,7 @@ const DisplayPosts = () => {
   useEffect(() => {
     async function fetchPost() {
       try {
-        const response = await axios.get(`https://writersblock.onrender.com/posts/${id}`);
+        const response = await axios.get(`https://writersbloc-412edc637764.herokuapp.com/posts/${id}`);
         const postData = response.data;
         setPost(postData);
         setCount(postData.likeCount || 0);
@@ -32,7 +32,7 @@ const DisplayPosts = () => {
     const updatedCount = count + 1;
 
     try {
-      await axios.post(`https://writersblock.onrender.com/posts/update/${id}`, { title: post.title, content: post.content, likeCount: updatedCount });
+      await axios.post(`https://writersbloc-412edc637764.herokuapp.com/posts/update/${id}`, { title: post.title, content: post.content, likeCount: updatedCount });
     } catch (error) {
       console.error('Error updating count:', error);
     }
@@ -45,7 +45,7 @@ const DisplayPosts = () => {
     const newComment = comments.value;
   
     try {
-      await axios.post(`https://writersblock.onrender.com/posts/update/${id}`, {
+      await axios.post(`https://writersbloc-412edc637764.herokuapp.com/posts/update/${id}`, {
         title: post.title, content: post.content, comments: post.comments ? `${post.comments}\n${newComment}` : newComment,
       });
   

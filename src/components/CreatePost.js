@@ -9,7 +9,7 @@ const CreatePost = () => {
     event.preventDefault();
 
     try {
-      axios.post('https://writersblock.onrender.com/posts/add', post); // Assuming the endpoint is /posts
+      axios.post('https://writersbloc-412edc637764.herokuapp.com/posts/add', post); // Assuming the endpoint is /posts
       window.location = '/';
     } catch (error) {
       console.log(error);

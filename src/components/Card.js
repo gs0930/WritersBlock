@@ -15,7 +15,7 @@ const Card = (props) => {
   useEffect(() => {
     async function fetchPost() {
       try {
-        const response = await axios.get(`https://writersblock.onrender.com/posts/${props.id}`);
+        const response = await axios.get(`https://writersbloc-412edc637764.herokuapp.com/posts/${props.id}`);
         const postData = response.data[0];
         setPost(postData);
       } catch (error) {

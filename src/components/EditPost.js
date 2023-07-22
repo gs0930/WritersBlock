@@ -12,7 +12,7 @@ const EditPost = () => {
   });
 
   useEffect(() => {
-    axios.get(`https://writersblock.onrender.com/posts/${id}`)
+    axios.get(`https://writersbloc-412edc637764.herokuapp.com/posts/${id}`)
       .then(response => {
         const { title, content, image } = response.data;
         setPost({
@@ -51,7 +51,7 @@ const EditPost = () => {
 
     console.log(updatedPost);
 
-    axios.post(`https://writersblock.onrender.com/posts/update/${id}`, updatedPost)
+    axios.post(`https://writersbloc-412edc637764.herokuapp.com/posts/update/${id}`, updatedPost)
       .then(res => console.log(res.data))
       .catch(error => console.log(error));
 
@@ -59,7 +59,7 @@ const EditPost = () => {
   };
 
   const deletePost = () => {
-    axios.delete(`https://writersblock.onrender.com/posts/${id}`)
+    axios.delete(`https://writersbloc-412edc637764.herokuapp.com/posts/${id}`)
       .then(res => console.log(res.data))
       .catch(error => console.log(error));
 
