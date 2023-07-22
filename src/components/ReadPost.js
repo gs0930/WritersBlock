@@ -90,7 +90,7 @@ const ReadPosts = (props) => {
 
             {/* <h1 style={{ color: 'blue' }}>Information</h1> */}
             <container className="contain">
-            <button style={{marginLeft: '22px'}} class="btn btn-primary rounded" onClick={handleSortByMostPopular}>Most Popular</button>
+            <button style={{marginLeft: '26px'}} class="btn btn-primary rounded" onClick={handleSortByMostPopular}>Most Popular</button>
             </container>
             <div className="ReadPosts">
             {
