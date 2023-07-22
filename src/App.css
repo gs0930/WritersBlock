@@ -1,7 +1,6 @@
 
 .App {
-  /* font-family:Avenir, "Century Gothic", sans-serif; */
-  font-family: HK Grotesk;
+  font-family:Avenir, "Century Gothic", sans-serif;
   font-weight:100; 
   font-style:normal;
   font-size: calc(10px + 2vmin);
@@ -154,8 +153,7 @@ button:hover {
 
 p {
   font-size: 18px;
-  /* font-family: inherit; */
-  font-family: HK Grotesk;
+  font-family: inherit;
 }
 
 
@@ -185,7 +183,7 @@ p {
   height: auto;
   text-align: left;
   background-color: #069002;
-  font-family: Arial, sans-serif;
+  font-family: inherit;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;

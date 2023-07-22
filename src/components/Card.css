@@ -9,8 +9,7 @@
     height: 180px;
     text-align: center;
     background-color: #069002;
-    /* font-family: inherit; */
-    font-family: HK Grotesk;
+    font-family: inherit;
     margin-left: 45px;
     
 }
@@ -24,8 +23,7 @@
 
 
 h1, h2, h3, h4, h5, h6 {
-    /* font-family: inherit; */
-    font-family: HK Grotesk;
+    font-family: inherit;
   }
 
 .Link {
@@ -79,7 +77,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0.6em 1.2em;
     font-size: 15px;
     font-weight: 500;
-    font-family: HK Grotesk;
+    font-family: inherit;
     background-color: #30ba5c;
     color:white;
     cursor: pointer;

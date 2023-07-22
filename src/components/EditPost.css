@@ -48,8 +48,7 @@ input[type=submit]:hover {
     border: 1px solid transparent;
     font-size: 20px;
     font-weight: 500;
-    /* font-family: inherit; */
-    font-family: HK Grotesk;
+    font-family: inherit;
     background-color: #870404;
     color:white;
     cursor: pointer;
