@@ -151,11 +151,7 @@ app.post('/api/analyze-combined', (req, res) => {
   
     let summary = '';
     if (sentences.length > 1) {
-      // const summarizationOptions = {
-      //   sentences: 3,
-      //   lang: 'en',
-      // };
-      // summary = summarizer.summarize(text, summarizationOptions);
+      
       summary = summarizer.getSummaryByFrequency().summary;
 
     }
