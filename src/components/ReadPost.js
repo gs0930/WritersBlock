@@ -85,12 +85,12 @@ const ReadPosts = (props) => {
         {/* <ReadPosts posts={posts} /> */}
 
             <container className="contain"><input type="text" value={searchQuery} onChange={handleSearchInputChange} placeholder="Search by title" />
-            <button onClick={filterPosts}>Search</button></container>
+            <button style={{marginTop: '6px'}}onClick={filterPosts}>Search</button></container>
             
 
             {/* <h1 style={{ color: 'blue' }}>Information</h1> */}
             <container className="contain">
-            <button class="btn btn-primary rounded" onClick={handleSortByMostPopular}>Most Popular</button>
+            <button style={{marginLeft: '22px'}} class="btn btn-primary rounded" onClick={handleSortByMostPopular}>Most Popular</button>
             </container>
             <div className="ReadPosts">
             {
