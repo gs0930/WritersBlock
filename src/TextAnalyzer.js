@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+// import openai from 'openai';
 
 const TextAnalyzer = () => {
   const [text, setText] = useState('');
@@ -42,22 +43,6 @@ const fetchSynonyms = async () => {
     setSynonymsList(newSynonymsList);
   };
 
-  const generateFeedback = async () => {
-    try {
-      const feedbackPrompt = `Provide a two-sentence overall feedback for the writing:\n"${text}"\nFeedback:`;
-      const openaiResponse = await openai.Completion.create({
-        engine: 'davinci',
-        prompt: feedbackPrompt,
-        max_tokens: 50, 
-      });
-
-      const feedback = openaiResponse.choices[0].text.trim();
-      return feedback;
-    } catch (error) {
-      console.error(error);
-      return '';
-    }
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -92,6 +77,7 @@ const fetchSynonyms = async () => {
 
       fetchSynonyms();
       setShowSynonymsButton(true); // Show synonym button
+
 
 
     } catch (error) {
