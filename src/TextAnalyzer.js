@@ -12,9 +12,11 @@ const TextAnalyzer = () => {
   const [sentiments, setSentiments] = useState([]);
   const [showSynonymsButton, setShowSynonymsButton] = useState(false);
   const [feedback, setFeedback] = useState('');
+  // const api_key = import.meta.env.REACT_APP_API_KEY;
+  const api_key = process.env.REACT_APP_API_KEY;
+  console.log(process.env);
 
-  const api_key = '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';
-
+  // const api_key = import.meta.env.REACT_APP_API_KEY;
   const handleChange = (event) => {
     setText(event.target.value);
   };
