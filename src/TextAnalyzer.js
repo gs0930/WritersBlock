@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import openai from 'openai';
 
 const TextAnalyzer = () => {
   const [text, setText] = useState('');
@@ -12,13 +11,17 @@ const TextAnalyzer = () => {
   const [synonymsList, setSynonymsList] = useState([]);
   const [sentiments, setSentiments] = useState([]);
   const [showSynonymsButton, setShowSynonymsButton] = useState(false);
+  const [feedback, setFeedback] = useState('');
+
+  const api_key = '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';
 
   const handleChange = (event) => {
     setText(event.target.value);
   };
 
-const fetchSynonyms = async () => {
+  const fetchSynonyms = async () => {
     const wordList = longWordFrequencies.slice(0, 5).map((frequency) => frequency.word);
+    console.log("wordlist" + wordList)
 
     const newSynonymsList = [];
     for (const word of wordList) {
@@ -36,13 +39,16 @@ const fetchSynonyms = async () => {
         const synonyms = response.data.synonyms.slice(0, 5);
         newSynonymsList.push({ word, synonyms });
       } catch (error) {
-        console.error(error);
+        //console.error(error);
       }
     }
 
     setSynonymsList(newSynonymsList);
   };
 
+  useEffect(() => {
+    fetchSynonyms();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -56,6 +62,7 @@ const fetchSynonyms = async () => {
       // const sortedLongWordFrequencies = response.data.longWordFrequencies.sort((a, b) =>
       //   b.frequency - a.frequency
       // );
+      
       const sortedLongWordFrequencies = response.data.longWordFrequencies;
       setLongWordFrequencies(sortedLongWordFrequencies);
       console.log(longWordFrequencies);
@@ -75,38 +82,42 @@ const fetchSynonyms = async () => {
       const summaryData = response.data.summary;
       setSummary(summaryData);
 
-      fetchSynonyms();
+      AIrequest();
+      setTimeout(() => {
+        fetchSynonyms();
+      }, 1000);
       setShowSynonymsButton(true); // Show synonym button
-
-
+      
 
     } catch (error) {
       console.error(error);
     }
-    // console.log(longWordFrequencies);
-    // const wordList = longWordFrequencies.slice(0, 5).map((frequency) => frequency.word);
-    // const newSynonymsList = [];
+   
 
-    // for (const word of wordList) {
-    //   try {
-    //     const response = await axios.get(`https://wordsapiv1.p.rapidapi.com/words/${word}/synonyms`, {
-    //       headers: {
-    //         'X-RapidAPI-Key': '5a13954628mshb4abc2d3b9c74a6p1c4403jsn784f7435a766',
-    //         'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
-    //       }
-    //     });
+  };
 
+  const AIrequest = async () => {
+    const feedbackPrompt = `Provide a two-sentence overall feedback for the writing: "${text}"`;
+    const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+      messages: [{ "role": "user", "content": `${feedbackPrompt}` }],
+      temperature: 0.7,
+      max_tokens: 50,
+      model: "gpt-3.5-turbo",
+      // api_key: api_key,
+    }, {
+      headers: {
+        'Authorization': 'Bearer ' + api_key,
+      },
+    });
+    console.log(response.data.choices[0].message.content);
 
-    //     const synonyms = response.data.synonyms.slice(0, 5);
-    //     newSynonymsList.push({ word, synonyms });
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // }
-    // console.log(newSynonymsList);
+    if (response.status === 200) {
 
-    // setSynonymsList(newSynonymsList);
-    
+      setFeedback(response.data.choices[0].message.content);
+      //console.log(feedback);
+    } else {
+      //console.error(response);
+    }
   };
 
   return (
@@ -126,8 +137,8 @@ const fetchSynonyms = async () => {
           Analyze
         </button>
         {showSynonymsButton && (
-          <button style={{ marginTop: '10px', marginLeft: '10px'}} type="button" onClick={fetchSynonyms}>
-            Get Synonyms
+          <button style={{ marginTop: '10px', marginLeft: '10px' }} type="button" onClick={fetchSynonyms} >
+            Get Synonyms <span class="spinner-grow spinner-grow-sm"> </span>
           </button>
         )}
       </form>
@@ -152,7 +163,7 @@ const fetchSynonyms = async () => {
               <div className="container-wrapper2">
                 {synonymsList.slice(0, 5).map((synonymItem, index) => (
                   <li key={index}>
-                    <strong>{synonymItem.word.charAt(0).toUpperCase() + synonymItem.word.slice(1)}</strong>: {synonymItem.frequency}
+                    <strong>{synonymItem.word.charAt(0).toUpperCase() + synonymItem.word.slice(1)}</strong>: {longWordFrequencies[index].frequency}
                     <ul>
                       {synonymItem.synonyms.map((synonym, idx) => (
                         <li key={idx}>{synonym}</li>
@@ -190,6 +201,17 @@ const fetchSynonyms = async () => {
                     {index !== sentiments.length - 1 && ' -> '}
                   </span>
                 ))}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {feedback.length > 0 && (
+          <div className="container">
+            <div>
+              <h5>Here is some brief feedback for your writing:</h5>
+              <p>
+               {feedback}
               </p>
             </div>
           </div>
