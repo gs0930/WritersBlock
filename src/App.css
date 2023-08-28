@@ -185,7 +185,7 @@ button:hover {
   justify-content: space-between;
   gap: 15px;
   margin-top: 15px;
-  align-items: center;
+  /* align-items: center; */
 }
 
 p {
@@ -202,6 +202,7 @@ p {
   margin-left: 0px;
   text-align: left;
   margin-top: 20px;
+  width: 700px;
 }
 
 .comment h6, h5{
